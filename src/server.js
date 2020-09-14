@@ -19,6 +19,23 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
+var cors = require('cors');
+
+const corsOpts = {
+    origin: '*',
+  
+    methods: [
+      'GET',
+      'POST',
+    ],
+  
+    allowedHeaders: [
+      'Content-Type',
+    ],
+  };
+  
+  app.use(cors(corsOpts));
+
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + '/../views/index.html'));
 });
